@@ -17,7 +17,7 @@ In it's current form, it is only really useable by people comfortable with some 
 5. Run `node ./index.js` and enjoy.  
 6. If you see an available window, go back to the website and click "Reserve a Time" quickly! 
 
-**Note:** *(In my experience, you'll want to put some items in your cart and checkout, otherwise you can lose the time - but you can change your order up to a few hours before your delivery)*
+**Note:** *In my experience, you'll want to put some items in your cart and checkout, otherwise you can lose the time - but you can change your order up to a few hours before your delivery*
 
 ### Disclaimer
 
