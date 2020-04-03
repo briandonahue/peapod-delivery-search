@@ -15,6 +15,9 @@ In it's current form, it is only really useable by people comfortable with some 
 3. Paste the cookie value all on one line with no extra line breaks into a file in the root named `.cookie`
 4. **Optional:** Change the number in the for loop to how many days you want to search, default is 10 - yes I could make this a command line arg, maybe I will eventually but if you're in a hurry, I take PRs!
 5. Run `node ./index.js` and enjoy.  
+6. If you see an available window, go back to the website and click "Reserve a Time" quickly! 
+
+**Note: ** (In my experience, you'll want to put some items in your cart and checkout, otherwise you can lose the time - but you can change your order up to a few hours before your delivery)
 
 ### Disclaimer
 
