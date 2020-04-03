@@ -1,26 +1,42 @@
 const moment = require('moment')
+const fs = require('fs')
+
 const req = require('axios').create({
   baseURL: 'https://www.peapod.com',
 })
-const sessionCookie = "COOKIE HERE"
+
+const calFormats = {
+                      lastDay : '[Yesterday]',
+                      sameDay : '[Today]',
+                      nextDay : '[Tomorrow]',
+                      lastWeek : '[last] dddd',
+                      nextWeek : '[this] dddd',
+                      sameElse : 'L'
+                  }
+
+const timeFormat = 'h:mm A'
 
 
 async function main(){
 
+  const sessionCookie = fs.readFileSync('./.cookie').toString();
+
   let currentDate = moment()
 
-  for(let i = 0; i < 15; i++) {
+  for(let i = 0; i < 10; i++) {
 
     let targetDate = currentDate.format('YYYY-MM-DD')
-    console.log(`Trying ${targetDate}...`)
     const available = await checkDeliveries(targetDate, sessionCookie)
     if(available && available.length > 0){
       available.forEach(el => {
-        console.log(el)
+        const start = moment(el.timeStart)
+        const end = moment(el.timeEnd)
+        console.log(`WINDOW AVAILABLE: ${start.calendar(null, calFormats)} ` +
+                    `${start.format(timeFormat)} - ${end.format(timeFormat)}`)
       });
     }
     else {
-      console.log("No slots available on " + targetDate)
+      console.log("No slots available " + currentDate.calendar(null, calFormats))
     }
 
     currentDate.add(1, 'days').format('YYYY-MM-DD')
@@ -39,7 +55,7 @@ async function checkDeliveries(date, sessionCookie) {
       pupAvail: 'true',
       selected: 'true',
       serviceType: 'D',
-      viewDate:'2020-04-06'
+      viewDate: date
     },
     headers: {
       'Host': 'www.peapod.com',
@@ -66,10 +82,14 @@ async function checkDeliveries(date, sessionCookie) {
   var available = slots.filter((el) => {
     return el.statusCode !== 'SO'
   })
+  return available
 }
 
 main()
   .then(console.log)
   .catch(console.error)
+  .catch((e) => {
+    console.log('ERROR')
+  })
 
 
