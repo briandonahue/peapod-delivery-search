@@ -1,9 +1,14 @@
 const moment = require('moment')
 const fs = require('fs')
+const cookieSupport = require('axios-cookiejar-support')
+const tough = require('tough-cookie')
+
 
 const req = require('axios').create({
-  baseURL: 'https://www.peapod.com',
+  baseURL: 'https://www.peapod.com/api/',
 })
+cookieSupport(req)
+const jar = new tough.CookieJar();
 
 const calFormats = {
                       lastDay : '[Yesterday]',

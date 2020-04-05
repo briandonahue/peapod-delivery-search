@@ -5,7 +5,9 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
+    "axios-cookiejar-support": "^0.5.1",
     "moment": "^2.24.0",
-    "set-cookie-parser": "^2.4.3"
+    "set-cookie-parser": "^2.4.3",
+    "yargs": "^15.3.1"
   }
 }
