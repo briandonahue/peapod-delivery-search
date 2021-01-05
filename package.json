@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "moment": "^2.24.0",
     "set-cookie-parser": "^2.4.3"
   }
